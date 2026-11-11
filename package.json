@@ -1,0 +1,35 @@
+{
+  "name": "umbral-de-acero",
+  "private": true,
+  "version": "0.2.0",
+  "description": "UMBRAL DE ACERO — original isometric tactical strategy game (browser build).",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5173 --strictPort",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 4173 --strictPort",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . && tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "three": "0.187.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "1.65.0",
+    "@types/node": "^22.19.0",
+    "globals": "^17.0.0",
+    "@types/three": "0.187.0",
+    "eslint": "^10.14.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.72.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

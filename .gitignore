@@ -1,14 +1,23 @@
-# Godot generated cache and editor state (never commit)
-.godot/
-*.tmp
-*.translation
-export_presets.cfg
+# Dependencies and build output (never commit)
+node_modules/
+dist/
+coverage/
 
-# Local build and report scratch output
-/build/
-/reports/scratch/
+# Test artefacts
+reports/playwright-results/
+reports/playwright/
+test-results/
+playwright-report/
 
-# OS and editor noise
+# Environment and editor noise
+.env
+.env.*
+!.env.example
 .DS_Store
 Thumbs.db
 *.swp
+.vscode/*
+!.vscode/extensions.json
+
+# Local Godot leftovers (the engine is no longer used)
+.godot/
