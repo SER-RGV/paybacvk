@@ -1,6 +1,6 @@
 # UMBRAL DE ACERO — Test Report
 
-Milestone: 01 (Technical foundation) · Commit under test: see DEVELOPMENT_STATUS.md §8 · Date: 2026-11-11
+Milestone: 01 (Technical foundation) · Code under test: commit `788c750` · Pushed branch head at verification: `e2ee2a9` · Date: 2026-11-11
 
 ## 1. How to run
 
@@ -33,6 +33,7 @@ The engine binary is kept outside the repository (`/tmp/godot-build`) and is not
 |---|---|---|
 | Full test suite (run 1) | `tools/run_tests.sh` | **68 passed, 0 failed**, 215 assertions, exit 0 |
 | Full test suite (runs 2 and 3) | same, repeated | **68 passed, 0 failed** each (stability check) |
+| Fresh clone of the pushed branch (`e2ee2a9`) | `git clone` into a new directory, then `tools/run_tests.sh` | **68 passed, 0 failed**, exit 0 |
 | Boot of the real main scene | `godot --headless --quit-after 120` | Clean boot, no script errors, exit 0 |
 | Mutation check | Removed the pause guard in `SimulationClock.advance()` | **2 tests failed** (`test_pause_stops_simulation`, `test_resume_continues_from_frozen_time`), exit 1. File restored and verified byte-identical |
 | Static parse + lint | `tools/lint.sh` | Clean (0 problems) |

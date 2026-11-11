@@ -180,4 +180,10 @@ Architecture decisions D1–D8 are in `ARCHITECTURE.md` §8. Phase-01-specific d
 ## 8. Git
 
 - Branch: `arena/37ba3921-paybacvk` (not renamed; not merged; no force-push).
-- Commits: recorded below after push.
+- Commits on `arena/37ba3921-paybacvk` (pushed to `origin`):
+  - `788c750` Add Milestone 01 tactical foundation (Godot 4.7): project, core, simulation, camera, UI, scenes.
+  - `d46b245` Add headless test runner, unit and integration tests (+ tools).
+  - `e2ee2a9` Document Phase 00 audit and Milestone 01 status.
+- Verification: a fresh clone of `e2ee2a9` passes 68/68.
+- Working tree: clean after push. Generated `.godot/` cache is ignored and not committed.
+- No pull request opened and nothing merged. Merge into `main` requires authorization.
