@@ -1,0 +1,14 @@
+# Godot generated cache and editor state (never commit)
+.godot/
+*.tmp
+*.translation
+export_presets.cfg
+
+# Local build and report scratch output
+/build/
+/reports/scratch/
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+*.swp

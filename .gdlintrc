@@ -1,0 +1,4 @@
+# gdlint configuration. Line length relaxed to 160 for long, descriptive test names and data tables.
+max-line-length: 160
+max-file-lines: 1000
+function-arguments-number: 12
