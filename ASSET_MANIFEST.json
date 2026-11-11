@@ -1,0 +1,54 @@
+{
+  "manifest_version": 1,
+  "project": "UMBRAL DE ACERO",
+  "updated": "2026-11-11",
+  "policy": "Every asset must be original (created by the project) or third-party with a documented commercial licence. No material from PaybackTime 2 or other external games is used.",
+  "assets": [
+    {
+      "id": "env_ground_test_plane",
+      "category": "env",
+      "description": "Flat ground plane for the Milestone 01 test range, generated in code (PlaneMesh 80 x 80 m).",
+      "source": "original (procedural, created in src/world/test_range_controller.gd)",
+      "license": "Project-owned",
+      "specification": {"type": "PlaneMesh", "size_m": [80, 80]},
+      "integration_status": "integrated",
+      "placeholder": true,
+      "replacement_requirement": "Final terrain tileset with albedo, normal and roughness maps in Phase 06."
+    },
+    {
+      "id": "env_concrete_block_placeholder",
+      "category": "env",
+      "description": "Four concrete block placeholders (BoxMesh) used as obstacles and scale reference.",
+      "source": "original (procedural)",
+      "license": "Project-owned",
+      "specification": {"type": "BoxMesh", "count": 4, "size_m": [4.0, "variable", 3.0]},
+      "integration_status": "integrated",
+      "placeholder": true,
+      "replacement_requirement": "Modular industrial cover kit (light, heavy, structural) with collision in Phase 02/06."
+    },
+    {
+      "id": "tac_sim_probe",
+      "category": "ui",
+      "description": "Test probe cube with pointer. Visual proof that the simulation clock drives scene state.",
+      "source": "original (procedural)",
+      "license": "Project-owned",
+      "specification": {"type": "BoxMesh x2"},
+      "integration_status": "integrated",
+      "placeholder": true,
+      "replacement_requirement": "Removed when real units exist (Phase 02)."
+    },
+    {
+      "id": "app_icon",
+      "category": "ui",
+      "description": "Application icon: amber chevron on dark square.",
+      "source": "original (hand-authored SVG, icon.svg)",
+      "license": "Project-owned",
+      "specification": {"format": "SVG", "size_px": [128, 128]},
+      "integration_status": "integrated",
+      "placeholder": false,
+      "replacement_requirement": null
+    }
+  ],
+  "third_party": [],
+  "totals": {"assets": 4, "third_party": 0, "placeholders": 3}
+}
