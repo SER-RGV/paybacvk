@@ -1,0 +1,339 @@
+:root {
+  --bg: #0b0f14;
+  --panel: rgba(12, 17, 24, 0.86);
+  --panel-border: #2b3a4a;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #d97706;
+  --accent-strong: #f59e0b;
+  --danger: #ef4444;
+  --ok: #22c55e;
+  --focus: #38bdf8;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.app {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+}
+
+.game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  touch-action: none;
+}
+
+.screens {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.screens > * {
+  pointer-events: auto;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--panel-border);
+  background: #1f2937;
+  color: var(--text);
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  min-width: 9rem;
+}
+
+.btn:hover {
+  background: #283548;
+  border-color: var(--accent);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Main menu and settings */
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.screen__title {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: 0.12em;
+  color: var(--accent-strong);
+}
+
+.screen__subtitle,
+.screen__footer {
+  margin: 0;
+  color: var(--muted);
+  max-width: 40rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 18rem;
+}
+
+.menu--row {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: min(36rem, 90vw);
+  padding: 1.5rem;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+}
+
+.settings__row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 4rem;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.settings__label {
+  text-align: left;
+}
+
+.settings__value {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+input[type='range'] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+/* Test range HUD */
+.hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  padding: 1rem;
+}
+
+.hud__panel,
+.hud__side > div,
+.hud__help {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  pointer-events: auto;
+}
+
+.hud__panel {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: min(22rem, calc(100vw - 2rem));
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.hud__title {
+  margin: 0 0 0.25rem;
+  font-size: 1.2rem;
+  color: var(--accent-strong);
+}
+
+.hud__row {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+}
+
+.hud__value {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.hud__status {
+  color: var(--ok);
+  font-weight: 600;
+}
+
+.hud__status--paused {
+  color: var(--danger);
+}
+
+.hud__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.hud__buttons .btn {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.hud__message {
+  min-height: 1.2em;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.hud__message[data-tone='error'] {
+  color: var(--danger);
+}
+
+.hud__side {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.hud__side > div {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.hud__help {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  right: 1rem;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Notices */
+.notices {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 10;
+  pointer-events: none;
+  width: min(32rem, calc(100vw - 2rem));
+}
+
+.notice {
+  padding: 0.6rem 0.9rem;
+  border-radius: 6px;
+  background: #111827;
+  border: 1px solid var(--panel-border);
+}
+
+.notice--error {
+  border-color: var(--danger);
+  color: #fecaca;
+}
+
+/* Loading and fatal error */
+.status {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+.status__title {
+  margin: 0;
+  color: var(--danger);
+}
+
+.status__text {
+  max-width: 40rem;
+  margin: 0;
+}
+
+/* Small screens: keep the HUD usable */
+@media (max-width: 720px) {
+  .hud__side {
+    top: auto;
+    bottom: 4.5rem;
+    right: 1rem;
+  }
+
+  .hud__help {
+    font-size: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
