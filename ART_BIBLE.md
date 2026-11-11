@@ -1,6 +1,6 @@
 # UMBRAL DE ACERO — Art Bible
 
-Status: draft for Milestone 01. Describes rules that apply to all visual work from Phase 02 onward. The Milestone 01 test range uses only primitive shapes and flat materials, so it establishes scale and palette, not final art.
+Status: draft. Describes rules that apply to all visual work from Phase 02 onward. The Phase 01 test range uses only primitive shapes and flat materials, so it establishes scale and palette, not final art.
 
 ## 1. Direction
 
@@ -8,7 +8,7 @@ Realistic military science fiction set in a fragmented industrial territory. Cre
 
 ## 2. Camera and scale
 
-- Isometric orthographic camera, elevation 35.264°, yaw 45° default.
+- Isometric orthographic camera, elevation 35.264°, yaw 45° default (browser build, Three.js `OrthographicCamera`).
 - Scale: **1 world unit = 1 metre**. Standing infantry ≈ 1.8 m tall; doorway ≈ 2.1 m high, 0.9 m wide.
 - Ground grid cell: 1 m for navigation and cover placement (to be implemented in Phase 02).
 
@@ -37,11 +37,11 @@ One directional key light with shadows, colour ambient fill. Lighting must keep 
 
 | Asset type | Pattern | Example |
 |---|---|---|
-| Scene | `snake_case.tscn` | `test_range.tscn` |
-| Script | `snake_case.gd` | `simulation_clock.gd` |
-| Mesh | `msh_<category>_<name>_<variant>.glb` | `msh_env_concrete_block_a.glb` |
-| Material | `mat_<category>_<name>.tres` | `mat_env_concrete_rough.tres` |
-| Texture | `tex_<category>_<name>_<map>.png` | `tex_env_concrete_01_albedo.png` |
+| Code module | `PascalCase.ts` for classes, `camelCase.ts` for pure functions | `TacticalSimulation.ts`, `cameraMath.ts` |
+| Test | `<Module>.test.ts` (unit), `<area>.spec.ts` (browser) | `IsoCamera.test.ts`, `app.spec.ts` |
+| Model (glTF) | `msh_<category>_<name>_<variant>.glb` | `msh_env_concrete_block_a.glb` |
+| Material (exported) | `mat_<category>_<name>.json` | `mat_env_concrete_rough.json` |
+| Texture | `tex_<category>_<name>_<map>.png` (or `.webp`) | `tex_env_concrete_01_albedo.png` |
 | Audio | `sfx_<category>_<name>.ogg` | `sfx_weapon_rifle_fire_01.ogg` |
 | UI icon | `icn_<name>_<size>.svg` | `icn_pause_24.svg` |
 
@@ -55,4 +55,4 @@ Permitted sources: original work by the team, or third-party assets with a docum
 
 ## 8. Current state
 
-Milestone 01 uses primitive meshes (boxes, a plane, one probe). These are placeholders created in code and listed in the manifest with status `placeholder`. They must be replaced in Phase 06 with final-quality models.
+Phase 01 uses primitive meshes created in code (boxes, a ground plane, a cylinder marker). They are placeholders and are listed in `ASSET_MANIFEST.json` with `placeholder: true`. They are replaced with final-quality models in Phase 06.

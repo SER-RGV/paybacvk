@@ -1,30 +1,39 @@
 # UMBRAL DE ACERO — Roadmap
 
-Status key: **COMPLETE** · **PARTIAL** · **BLOCKED** · **NOT STARTED**. Updated at the end of each phase (see `DEVELOPMENT_STATUS.md`).
+Status key: **COMPLETE** · **PARTIAL** · **BLOCKED** · **NOT STARTED**. Details per phase in `DEVELOPMENT_STATUS.md`. Test evidence in `TEST_REPORT.md`.
+
+Stack: HTML5 + TypeScript + Three.js + Vite. Unit tests Vitest, browser tests Playwright. No Godot.
 
 | Phase | Goal | Acceptance criteria | Status |
 |---|---|---|---|
-| 00 Repository audit | Inventory, architecture, dependencies, assets, risks, roadmap, baseline | Audit documented; baseline test run recorded | **COMPLETE** (see DEVELOPMENT_STATUS.md §1) |
-| 01 Technical foundation | Project structure, core state, scene management, camera, input, simulation clock, pause, basic UI | Open game → enter test scenario → control camera → pause/resume simulation; automated tests pass | **PARTIAL**: implemented, integrated and automated-tested (68/68). Manual play-test on a display is **BLOCKED** in this sandbox (see TEST_REPORT.md §5) |
-| 02 Tactical prototype | 4 controllable units, movement, selection, orders, navigation, enemies, basic combat, cover | A complete tactical encounter can be played | NOT STARTED |
-| 03 Combat system | Weapons, damage, ammunition, reloading, accuracy, visibility, suppression, enemy AI | Combat functional and testable | NOT STARTED |
-| 04 Destruction | Materials, integrity, damage, destruction, navigation updates | Destruction changes the playable environment | NOT STARTED |
-| 05 Persistent campaign | Characters, injuries, inventory, economy, HQ, contracts, mission outcomes, save/load | An operation changes the state of the next operation | NOT STARTED |
-| 06 Vertical slice | Final-quality environment, characters, animation, UI, audio, lighting, optimization | Complete, representative gameplay experience | NOT STARTED |
-| 07 Content and polish | Content expansion and commercial release preparation | Vertical slice passes QA | NOT STARTED |
+| 00 Repository audit | Inventory, classification, migration plan | Every existing item classified; errors corrected | **COMPLETE** |
+| 01 Technical foundation | Web project, core state, scenes, isometric camera, input, fixed-step simulation, pause and speeds, settings, save format, HUD, disposal | `npm install`, `npm run dev`, `build`, `test`, `lint` work; app runs in a browser; camera responds; pause stops the simulation; settings persist; automated tests and browser tests pass | **PARTIAL**: all automated criteria pass (75 unit, 13 browser). Gamepad hardware, real GPU and human playtest not done |
+| 02 Tactical prototype | Four selectable soldiers, click-to-move, individual and group orders, obstacle navigation, order queue, line of sight, cover, two enemy types, basic AI, first complete encounter | A complete tactical encounter can be played in the browser | NOT STARTED |
+| 03 Combat system | Weapons, damage, ammunition, reloading, accuracy, visibility, suppression, enemy AI | Combat is functional and tested | NOT STARTED |
+| 04 Destruction | Four destructible materials, integrity, damage, destruction, navigation updates | Destruction changes the playable environment | NOT STARTED |
+| 05 Persistent campaign | Characters, injuries, inventory, economy, HQ (armory, medical, workshop), contracts, outcomes, save/load | An operation changes the state of the next operation | NOT STARTED |
+| 06 Vertical slice | Final environment, characters, animation, UI, audio, lighting, optimisation | Representative gameplay on the reference PC | NOT STARTED |
+| 07 Content and polish | Full MVP content and release preparation | Vertical slice passes QA | NOT STARTED |
 
-## Phase 02 — planned breakdown (next)
+## MVP targets (from the directive)
 
-1. Grid-based navigation mesh over the test range; obstacle baking; update on environment change (tested).
+1 map · 6 recruitable and 4 deployable characters · 4 enemy archetypes · 12 weapons · 8 attachments · 4 specialisations · 4 destructible materials · 3 facilities (armory, medical, workshop) · 3 operations · 3 factions (Varda Authority, Helix Consortium, Reconstruction Front).
+
+None of the content targets exist yet.
+
+## Phase 02 — planned breakdown (not started; wait for Phase 01 review)
+
+1. Grid navigation over the test range; obstacle blocking; update on environment change (tested).
 2. Four player units with selection (click and box select), move orders, order queue, interruption.
-3. Line-of-sight raycasts with visibility states; fog of war for enemies.
-4. Two enemy archetypes using the Idle / Patrol / Detect / Engage states only.
-5. Light and heavy cover volumes with directional protection.
-6. Basic combat hooks (hit resolution placeholder), so Phase 03 replaces numbers, not architecture.
-7. One scripted encounter scenario and an end-to-end integration test.
+3. Line of sight with visibility states; fog of war for enemies.
+4. Two enemy archetypes using Idle / Patrol / Detect / Engage.
+5. Light and heavy cover with directional protection.
+6. Basic combat hooks, so Phase 03 replaces numbers rather than architecture.
+7. One scripted encounter and an end-to-end browser test.
 
-## Open blockers and risks
+## Open risks
 
-- Real GPU rendering, frame timing on the reference PC and gamepad behaviour are not verifiable in this sandbox (headless only). See TEST_REPORT.md.
-- Audio cannot be verified here (no audio device in headless mode).
-- Commercial asset licensing requires a documented source for every third-party file before import. The project currently uses none.
+- GPU performance, gamepad behaviour and non-Chromium browsers are not verified (see TEST_REPORT.md §5).
+- Audio cannot be verified in this sandbox.
+- Every third-party asset needs a documented commercial licence in `ASSET_MANIFEST.json` before import. The project currently uses none.
+- The Chromium binary used for local browser tests is not part of the project and its licence has not been checked for redistribution.

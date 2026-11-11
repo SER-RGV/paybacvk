@@ -1,27 +1,27 @@
 {
-  "manifest_version": 1,
+  "manifest_version": 2,
   "project": "UMBRAL DE ACERO",
   "updated": "2026-11-11",
-  "policy": "Every asset must be original (created by the project) or third-party with a documented commercial licence. No material from PaybackTime 2 or other external games is used.",
+  "policy": "Every asset must be original (created by the project) or third-party with a documented commercial licence recorded here before import. No material from PaybackTime 2 or any other external game is used.",
   "assets": [
     {
       "id": "env_ground_test_plane",
       "category": "env",
-      "description": "Flat ground plane for the Milestone 01 test range, generated in code (PlaneMesh 80 x 80 m).",
-      "source": "original (procedural, created in src/world/test_range_controller.gd)",
+      "description": "Flat ground plane and grid for the Test Range, generated in code (PlaneGeometry 80 x 80 m plus GridHelper).",
+      "source": "original (procedural, src/engine/World.ts createGround)",
       "license": "Project-owned",
-      "specification": {"type": "PlaneMesh", "size_m": [80, 80]},
+      "specification": {"type": "PlaneGeometry + GridHelper", "size_m": [80, 80]},
       "integration_status": "integrated",
       "placeholder": true,
-      "replacement_requirement": "Final terrain tileset with albedo, normal and roughness maps in Phase 06."
+      "replacement_requirement": "Terrain tileset with albedo, normal and roughness maps in Phase 06."
     },
     {
       "id": "env_concrete_block_placeholder",
       "category": "env",
-      "description": "Four concrete block placeholders (BoxMesh) used as obstacles and scale reference.",
-      "source": "original (procedural)",
+      "description": "Five box obstacles of varied size and colour used as cover-like scale references (src/data/testRange.ts).",
+      "source": "original (procedural, BoxGeometry)",
       "license": "Project-owned",
-      "specification": {"type": "BoxMesh", "count": 4, "size_m": [4.0, "variable", 3.0]},
+      "specification": {"type": "BoxGeometry", "count": 5, "height_m": [1.1, 4.8]},
       "integration_status": "integrated",
       "placeholder": true,
       "replacement_requirement": "Modular industrial cover kit (light, heavy, structural) with collision in Phase 02/06."
@@ -29,10 +29,10 @@
     {
       "id": "tac_sim_probe",
       "category": "ui",
-      "description": "Test probe cube with pointer. Visual proof that the simulation clock drives scene state.",
-      "source": "original (procedural)",
+      "description": "Patrol marker (cylinder) moved along a loop by the simulation clock. Shows that pause stops scene state.",
+      "source": "original (procedural, CylinderGeometry in src/tactical/TestRangeScene.ts)",
       "license": "Project-owned",
-      "specification": {"type": "BoxMesh x2"},
+      "specification": {"type": "CylinderGeometry", "radius_m": 0.45, "height_m": 1.6},
       "integration_status": "integrated",
       "placeholder": true,
       "replacement_requirement": "Removed when real units exist (Phase 02)."
@@ -41,7 +41,7 @@
       "id": "app_icon",
       "category": "ui",
       "description": "Application icon: amber chevron on dark square.",
-      "source": "original (hand-authored SVG, icon.svg)",
+      "source": "original (hand-authored SVG, formerly icon.svg, now public/favicon.svg)",
       "license": "Project-owned",
       "specification": {"format": "SVG", "size_px": [128, 128]},
       "integration_status": "integrated",
@@ -50,5 +50,13 @@
     }
   ],
   "third_party": [],
+  "tooling_not_in_repo": [
+    {
+      "id": "tool_chromium_local",
+      "description": "Chromium 153 headless shell used only for local Playwright runs in the development sandbox. Not shipped, not in the repository.",
+      "source": "npm package @sparticuz/chromium (sandbox only)",
+      "license_status": "Upstream Chromium is BSD-licensed; the packaged binary's redistribution terms were NOT checked. Do not distribute it."
+    }
+  ],
   "totals": {"assets": 4, "third_party": 0, "placeholders": 3}
 }
